@@ -15,6 +15,5 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Time
         }
         public DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, _timeZone);
         public DateOnly Today => DateOnly.FromDateTime(Now.Date);
-
     }
 }
