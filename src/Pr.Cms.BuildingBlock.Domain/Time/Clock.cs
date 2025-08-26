@@ -1,35 +1,39 @@
-namespace Pr.Cms.BuildingBlock.Domain.Time;
+using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Statyczny zegar zapewniaj¹cy globalny dostêp do us³ugi czasu poprzez.
-/// Wymaga inicjalizacji z implementacj¹ IDateTimeProvider przed u¿yciem (automatyczna rejestracja).
-/// </summary>
-public static class Clock
+[assembly: InternalsVisibleTo("Pr.Cms.BuildingBlock.Infrastructure")]
+namespace Pr.Cms.BuildingBlock.Domain.Time
 {
-    private static IDateTimeProvider _provider;
-    private static readonly object _lock = new();
-    public static IDateTimeProvider Provider
+    /// <summary>
+    /// Statyczny zegar zapewniaj¹cy globalny dostêp do us³ugi czasu poprzez.
+    /// Wymaga inicjalizacji z implementacj¹ IDateTimeProvider przed u¿yciem (automatyczna rejestracja).
+    /// </summary>
+    public static class Clock
     {
-        get
+        private static IDateTimeProvider _provider;
+        private static readonly object _lock = new();
+        public static IDateTimeProvider Provider
         {
-            if (_provider is null)
-                throw new InvalidOperationException("SystemClock has not been initialized. Call Initialize method first.");
-            return _provider;
+            get
+            {
+                if (_provider is null)
+                    throw new InvalidOperationException("SystemClock has not been initialized. Call Initialize method first.");
+                return _provider;
+            }
         }
-    }
-    internal static void Initialize(IDateTimeProvider dateTimeProvider)
-    {
-        ArgumentNullException.ThrowIfNull(dateTimeProvider);
-        lock (_lock)
+        internal static void Initialize(IDateTimeProvider dateTimeProvider)
         {
-            if (_provider is not null)
-                throw new InvalidOperationException("SystemClock has already been initialized.");
+            ArgumentNullException.ThrowIfNull(dateTimeProvider);
+            lock (_lock)
+            {
+                if (_provider is not null)
+                    throw new InvalidOperationException("SystemClock has already been initialized.");
 
-            _provider = dateTimeProvider;
+                _provider = dateTimeProvider;
+            }
         }
+
+        public static DateOnly Today => _provider.Today;
+        public static DateTimeOffset Now => _provider.Now;
+
     }
-
-    public static DateOnly Today => _provider.Today;
-    public static DateTimeOffset Now => _provider.Now;
-
 }
