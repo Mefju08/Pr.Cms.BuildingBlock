@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Abstractions.Persistance
+﻿namespace Pr.Cms.BuildingBlock.Domain.Repositories
 {
     public interface IUnitOfWork
     {

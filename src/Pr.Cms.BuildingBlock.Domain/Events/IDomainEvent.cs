@@ -1,10 +1,8 @@
-﻿using MediatR;
-
-namespace Pr.Cms.BuildingBlock.Domain.Events
+﻿namespace Pr.Cms.BuildingBlock.Domain.Events
 {
-    public interface IDomainEvent : INotification
+    public interface IDomainEvent
     {
         Guid Id { get; }
-        DateTime OccurredOn { get; }
+        DateTimeOffset OccurredOn { get; }
     }
 }

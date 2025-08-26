@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pr.Cms.BuildingBlock.Abstractions.Persistance;
+using Pr.Cms.BuildingBlock.Domain.Repositories;
 using Pr.Cms.BuildingBlock.Domain.Time;
 using Pr.Cms.BuildingBlock.Infrastructure.DomainEvents;
 using Pr.Cms.BuildingBlock.Infrastructure.Persistance;
-using Pr.Cms.BuildingBlock.Infrastructure.Persistance.Repositories;
 using Pr.Cms.BuildingBlock.Infrastructure.Time;
-using System.Reflection;
 
 namespace Pr.Cms.BuildingBlock.Infrastructure
 {
@@ -26,15 +24,10 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 
-            services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-
-            services.AddScoped(typeof(IGenericRepository<,>), typeof(Repository<,>));
-
             return services;
         }
 
-        public static IServiceCollection AddPostgre<TDbContext>(this IServiceCollection services, string connectionString) where TDbContext : DbContext
+        public static IServiceCollection AddPostgres<TDbContext>(this IServiceCollection services, string connectionString) where TDbContext : DbContext
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
             ArgumentNullException.ThrowIfNullOrEmpty(connectionString, nameof(connectionString));

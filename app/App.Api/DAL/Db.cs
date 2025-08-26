@@ -5,7 +5,7 @@ namespace App.Api.DAL
 {
     public class Db : DbContext
     {
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<User> Cars { get; set; }
         public Db(DbContextOptions<Db> options) : base(options)
         {
 
@@ -15,14 +15,14 @@ namespace App.Api.DAL
             base.OnModelCreating(modelBuilder);
 
             // Konfiguracja value converter dla CarId
-            modelBuilder.Entity<Car>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(c => c.Id);
 
                 entity.Property(c => c.Id)
                     .HasConversion(
                         carId => carId.Value,
-                        value => new CarId(value)
+                        value => new UserId(value)
                     );
             });
         }

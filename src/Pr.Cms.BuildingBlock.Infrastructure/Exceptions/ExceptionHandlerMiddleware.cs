@@ -33,8 +33,8 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
-            var jsonResponse = JsonSerializer.Serialize(errorResponse, jsonOptions);
 
+            var jsonResponse = JsonSerializer.Serialize(errorResponse, jsonOptions);
             context.Response.StatusCode = errorResponse.StatusCode;
 
             await context.Response.WriteAsync(jsonResponse);
@@ -46,37 +46,28 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
                 NotFoundException notFoundEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.NotFound,
                     Title: "Resource Not Found",
-                    Detail: notFoundEx.Message,
-                    Type: "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.4",
-                    TraceId: GetTraceId()
+                    Detail: notFoundEx.Message
                 ),
                 ConflictException conflictEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.Conflict,
                     Title: "Resource Conflict",
-                    Detail: conflictEx.Message,
-                    Type: "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8",
-                    TraceId: GetTraceId()
+                    Detail: conflictEx.Message
+
                 ),
                 ForbiddenException forbiddenEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.Forbidden,
                     Title: "Forbidden Access",
-                    Detail: forbiddenEx.Message,
-                    Type: "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3",
-                    TraceId: GetTraceId()
+                    Detail: forbiddenEx.Message
                 ),
                 BaseException baseEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.BadRequest,
                     Title: "Application Error",
-                    Detail: baseEx.Message,
-                    Type: "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1",
-                    TraceId: GetTraceId()
+                    Detail: baseEx.Message
                 ),
                 _ => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.InternalServerError,
                     Title: "Internal Server Error",
-                    Detail: environment.IsDevelopment() ? exception.Message : "An unexpected error occurred.",
-                    Type: "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
-                    TraceId: GetTraceId()
+                    Detail: environment.IsDevelopment() ? exception.Message : "An unexpected error occurred."
                 )
             };
         }

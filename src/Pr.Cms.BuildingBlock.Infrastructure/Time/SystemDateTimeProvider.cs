@@ -1,10 +1,20 @@
 using Pr.Cms.BuildingBlock.Domain.Time;
 
-namespace Pr.Cms.BuildingBlock.Infrastructure.Time;
-public class SystemDateTimeProvider : IDateTimeProvider
+namespace Pr.Cms.BuildingBlock.Infrastructure.Time
 {
-    public DateTime UtcNow => DateTime.UtcNow;
-    public DateTime Now => DateTime.Now;
-    public DateOnly Today => DateOnly.FromDateTime(DateTime.Today);
+    /// <summary>
+    /// Implementacja dostawcy czasu systemowego skonfigurowana dla strefy czasowej Europa/Warszawa.
+    /// Automatycznie konwertuje czas UTC na lokalny czas warszawski dla wszystkich operacji czasowych.
+    /// </summary>
+    public class SystemDateTimeProvider : IDateTimeProvider
+    {
+        private readonly TimeZoneInfo _timeZone;
+        public SystemDateTimeProvider()
+        {
+            _timeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Warsaw");
+        }
+        public DateTimeOffset Now => TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, _timeZone);
+        public DateOnly Today => DateOnly.FromDateTime(Now.Date);
 
+    }
 }

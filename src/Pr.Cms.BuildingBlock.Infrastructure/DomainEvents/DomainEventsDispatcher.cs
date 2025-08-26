@@ -1,15 +1,15 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Pr.Cms.BuildingBlock.Domain.Types;
+using Wolverine;
 namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 {
-    public sealed class DomainEventsDispatcher(
-        IPublisher publisher,
+    internal sealed class DomainEventsDispatcher(
+        IMessageContext publisher,
         DbContext context) : IDomainEventsDispatcher
     {
         public async Task DispatchAsync()
         {
-            var events = context.ChangeTracker
+            var domainEvents = context.ChangeTracker
                  .Entries<AggregateRoot>()
                  .Select(x => x.Entity)
                  .SelectMany(x =>
@@ -20,8 +20,10 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 
                  }).ToList();
 
-            var eventTasks = events.Select(x => publisher.Publish(x));
-            await Task.WhenAll(eventTasks);
+            foreach (var domainEvent in domainEvents)
+            {
+                await publisher.PublishAsync(domainEvent);
+            }
         }
     }
 }

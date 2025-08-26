@@ -26,14 +26,14 @@ namespace App.Api
             builder.Services.RegisterSharedInfrastructure(builder.Configuration);
 
             // rejestracja eventów domenowych
-            builder.Services.RegisterDomainEventHandlers(typeof(BaseController).Assembly);
+            builder.Services.RegisterDomainEventHandlers(builder.Host, typeof(BaseController).Assembly);
 
             // dodawanie bazy
-            builder.Services.AddPostgre<Db>("test_connection_string");
+            builder.Services.AddPostgres<Db>("test_connection_string");
 
             var app = builder.Build();
 
-            // u¿uwanie obs³ugi wyj¹tkó (middleware)
+            //// u¿uwanie obs³ugi wyj¹tkó (middleware)
             app.UseGlobalExceptionHandler();
             app.UseHttpsRedirection();
             app.MapControllers();

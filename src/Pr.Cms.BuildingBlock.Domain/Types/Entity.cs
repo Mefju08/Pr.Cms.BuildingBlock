@@ -1,12 +1,14 @@
 ﻿namespace Pr.Cms.BuildingBlock.Domain.Types
 {
+    /// <summary>
+    /// Abstrakcyjna klasa bazowa dla wszystkich encji domenowych z typowanym identyfikatorem.
+    /// Implementuje równość opartą na identyfikatorze i typie encji.
+    /// </summary>
     public abstract class Entity : IEquatable<Entity>
     {
         public TypedId Id { get; protected set; }
 
-
-
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
             => Equals(obj as Entity);
 
         public bool Equals(Entity other)
@@ -23,7 +25,7 @@
         public override int GetHashCode()
             => HashCode.Combine(GetType(), Id);
 
-        public static bool operator ==(Entity? left, Entity? right)
+        public static bool operator ==(Entity left, Entity right)
         {
             if (ReferenceEquals(left, null))
                 return ReferenceEquals(right, null);
@@ -31,7 +33,7 @@
             return left.Equals(right);
         }
 
-        public static bool operator !=(Entity? left, Entity? right)
+        public static bool operator !=(Entity left, Entity right)
             => !(left == right);
     }
 }

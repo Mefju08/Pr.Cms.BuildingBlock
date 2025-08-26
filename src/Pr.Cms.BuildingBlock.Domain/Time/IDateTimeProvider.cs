@@ -1,9 +1,12 @@
-namespace Pr.Cms.BuildingBlock.Domain.Time;
-public interface IDateTimeProvider
+namespace Pr.Cms.BuildingBlock.Domain.Time
 {
-    DateTime UtcNow { get; }
+    /// <summary>
+    /// Kontrakt dla dostawcy czasu.
+    /// </summary>
+    public interface IDateTimeProvider
+    {
+        DateTimeOffset Now { get; }
 
-    DateTime Now { get; }
-
-    DateOnly Today { get; }
+        DateOnly Today { get; }
+    }
 }

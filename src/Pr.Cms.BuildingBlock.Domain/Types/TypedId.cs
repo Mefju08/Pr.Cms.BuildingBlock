@@ -1,5 +1,9 @@
 ﻿namespace Pr.Cms.BuildingBlock.Domain.Types
 {
+    /// <summary>
+    /// Abstrakcyjna klasa bazowa dla silnie typowanych identyfikatorów encji domenowych.
+    /// Zapewnia bezpieczeństwo typów i walidację wartości GUID, zapobiegając pomyleniu różnych identyfikatorów.
+    /// </summary>
     public abstract record TypedId
     {
         public Guid Value { get; }

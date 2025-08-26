@@ -1,13 +1,14 @@
 ﻿using App.Api.Models;
-using Microsoft.EntityFrameworkCore;
-using Pr.Cms.BuildingBlock.Infrastructure.Persistance.Repositories;
 
 namespace App.Api.DAL
 {
-    public class CarRepository : Repository<Car, CarId>, ICarRepository
+    public class CarRepository(
+        Db context) : ICarRepository
     {
-        public CarRepository(DbContext context) : base(context)
+        public async Task AddAsync(User user)
         {
+            context.Add(user);
+            await context.SaveChangesAsync();
         }
     }
 }

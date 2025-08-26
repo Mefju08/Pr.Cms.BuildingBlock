@@ -1,24 +1,22 @@
-﻿using App.Api.DAL;
-using App.Api.Models;
+﻿using App.Api.Commands;
 using Microsoft.AspNetCore.Mvc;
-using Pr.Cms.BuildingBlock.Abstractions.Persistance;
+using Wolverine;
 
 namespace App.Api.Controllers
 {
     [ApiController]
     [Route("")]
     public class BaseController(
-        ICarRepository carRepository,
-        IUnitOfWork unitOfWork) : ControllerBase
+        IMessageBus messageBus) : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var car = Car.Create();
-            await carRepository.AddAsync(car);
+            string name = "Mateusz";
+            var command = new RegisterCommand(name);
+            var result = await messageBus.InvokeAsync<Guid>(command);
 
-            await unitOfWork.SaveChangesAsync(default);
-            var response = new { name = "Joe" };
+            var response = new { Id = result };
             return Ok(response);
         }
     }

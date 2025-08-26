@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Pr.Cms.BuildingBlock.Infrastructure.Controllers
 {
-    public class ApiResponseWrapperFilter : IAsyncActionFilter
+    internal class ApiResponseWrapperFilter : IAsyncActionFilter
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
