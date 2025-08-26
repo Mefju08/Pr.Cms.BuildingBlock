@@ -28,6 +28,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
 
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
             services.AddScoped(typeof(IGenericRepository<,>), typeof(Repository<,>));
 
             return services;
@@ -36,6 +37,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
         public static IServiceCollection AddPostgre<TDbContext>(this IServiceCollection services, string connectionString) where TDbContext : DbContext
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
+            ArgumentNullException.ThrowIfNullOrEmpty(connectionString, nameof(connectionString));
 
             services.AddDbContext<TDbContext>(options =>
             {
@@ -44,6 +46,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
                 //for testing purpose
                 options.UseInMemoryDatabase("test_connection_string");
             });
+
             services.AddScoped<DbContext>(provider => provider.GetRequiredService<TDbContext>());
 
             return services;

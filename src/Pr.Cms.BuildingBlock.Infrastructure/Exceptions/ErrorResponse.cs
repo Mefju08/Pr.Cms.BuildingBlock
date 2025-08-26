@@ -1,6 +1,6 @@
 ﻿namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
 {
-    public record ErrorResponse(
+    public sealed record ErrorResponse(
          int StatusCode,
          string Title,
          string Detail,

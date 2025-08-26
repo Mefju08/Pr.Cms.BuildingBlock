@@ -20,12 +20,8 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 
                  }).ToList();
 
-            foreach (var @event in events)
-            {
-                await publisher.Publish(@event);
-            }
-
-            await Task.CompletedTask;
+            var eventTasks = events.Select(x => publisher.Publish(x));
+            await Task.WhenAll(eventTasks);
         }
     }
 }
