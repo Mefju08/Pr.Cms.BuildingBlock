@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pr.Cms.BuildingBlock.Domain.Repositories;
+using Pr.Cms.BuildingBlock.Abstractions.Repositories;
 using Pr.Cms.BuildingBlock.Infrastructure.DomainEvents;
 
 namespace Pr.Cms.BuildingBlock.Infrastructure.Persistance

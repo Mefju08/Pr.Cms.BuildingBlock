@@ -1,6 +1,6 @@
 ﻿using App.Api.DAL;
 using App.Api.Models;
-using Pr.Cms.BuildingBlock.Domain.Repositories;
+using Pr.Cms.BuildingBlock.Abstractions.Repositories;
 
 namespace App.Api.Commands
 {

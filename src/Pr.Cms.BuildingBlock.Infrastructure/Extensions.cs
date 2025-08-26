@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pr.Cms.BuildingBlock.Domain.Repositories;
-using Pr.Cms.BuildingBlock.Domain.Time;
+using Pr.Cms.BuildingBlock.Abstractions.Repositories;
+using Pr.Cms.BuildingBlock.Abstractions.Time;
 using Pr.Cms.BuildingBlock.Infrastructure.DomainEvents;
 using Pr.Cms.BuildingBlock.Infrastructure.Persistance;
 using Pr.Cms.BuildingBlock.Infrastructure.Time;

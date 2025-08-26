@@ -1,4 +1,4 @@
-﻿using Pr.Cms.BuildingBlock.Domain.Time;
+﻿using Pr.Cms.BuildingBlock.Abstractions.Time;
 
 namespace Pr.Cms.BuildingBlock.Domain.Events
 {
