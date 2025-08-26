@@ -11,4 +11,4 @@
 * **Obsługa Wyjątków**
     Zaimplementowano scentralizowany mechanizm obsługi wyjątków. Różne **rodzaje wyjątków** (np. `NotFoundException`) są mapowane na odpowiednie kody statusu HTTP, co zapewnia przewidywalne i spójne zachowanie API.
 * **Statyczny Dostawca Daty (Clock)**
-* * **Model do paginacji**
+* **Model do paginacji**
