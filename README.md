@@ -1,3 +1,16 @@
+# Użycie
+
+* **`AddApiResponseWrapper`**
+  Rejestracja wrappera do automatycznego opakowywania odpowiedzi w spójny format JSON `{"data": ...}`
+* **`RegisterDomainEventHandlers`**
+  Rejestracja handlerów eventów
+* **`UseGlobalExceptions`**
+  Rejestracje middleware do globalnej obsługi wyjątków
+* **`AddSharedInfrastructure`**
+  Rejestracja serwisów takich jak: `IDateTimeProvider`, `IUnitOfWork`, `IDomainEventsDispatcher`, `ExceptionHandlerMiddleware`
+* **`AddPostgres`**
+  Rejestracja bazy danych postgres
+
 # Wdrożone funkcjonalności
 
 * **AggregateRoot**
