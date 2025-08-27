@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pr.Cms.BuildingBlock.Abstractions.Repositories;
-using Pr.Cms.BuildingBlock.Abstractions.Time;
+using Pr.Cms.BuildingBlock.Core.Repositories;
+using Pr.Cms.BuildingBlock.Core.Time;
 using Pr.Cms.BuildingBlock.Infrastructure.DomainEvents;
+using Pr.Cms.BuildingBlock.Infrastructure.Exceptions;
 using Pr.Cms.BuildingBlock.Infrastructure.Persistance;
 using Pr.Cms.BuildingBlock.Infrastructure.Time;
 
@@ -11,7 +13,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
 {
     public static class Extensions
     {
-        public static IServiceCollection RegisterSharedInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
             ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
@@ -23,7 +25,8 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
-
+            services.AddSingleton<ExceptionHandlerMiddleware>();
+            
             return services;
         }
 
@@ -43,6 +46,6 @@ namespace Pr.Cms.BuildingBlock.Infrastructure
             services.AddScoped<DbContext>(provider => provider.GetRequiredService<TDbContext>());
 
             return services;
-        }
+        }       
     }
 }

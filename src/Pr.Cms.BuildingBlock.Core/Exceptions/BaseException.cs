@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Abstractions.Exceptions
+﻿namespace Pr.Cms.BuildingBlock.Core.Exceptions
 {
     /// <summary>
     /// Abstrakcyjna klasa bazowa dla wszystkich wyjątków aplikacyjnych w systemie.

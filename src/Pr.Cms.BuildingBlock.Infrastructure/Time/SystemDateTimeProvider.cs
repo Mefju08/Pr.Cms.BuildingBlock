@@ -1,4 +1,4 @@
-using Pr.Cms.BuildingBlock.Abstractions.Time;
+using Pr.Cms.BuildingBlock.Core.Time;
 
 namespace Pr.Cms.BuildingBlock.Infrastructure.Time
 {

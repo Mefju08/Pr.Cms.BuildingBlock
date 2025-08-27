@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Domain.Types
+﻿namespace Pr.Cms.BuildingBlock.Core.Types
 {
     /// <summary>
     /// Abstrakcyjna klasa bazowa dla wszystkich encji domenowych z typowanym identyfikatorem.

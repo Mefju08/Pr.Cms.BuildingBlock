@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Abstractions.Exceptions
+﻿namespace Pr.Cms.BuildingBlock.Core.Exceptions
 {
     /// <summary>
     /// Wyjątek reprezentujący sytuację, gdy żądany zasób o określonym typie i identyfikatorze nie został znaleziony.

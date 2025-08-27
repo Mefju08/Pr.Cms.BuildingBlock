@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Abstractions.Exceptions
+﻿namespace Pr.Cms.BuildingBlock.Core.Exceptions
 {
     /// <summary>
     /// Wyjątek reprezentujący brak uprawnień dostępu do zasobu lub operacji.

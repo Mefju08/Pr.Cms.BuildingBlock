@@ -5,7 +5,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Controllers
 {
     public static class Extensions
     {
-        public static IServiceCollection AddApiResponseWrapper(this IServiceCollection services, bool applyToAllActions = true)
+        public static IServiceCollection AddApiResponseWrapper(this IServiceCollection services)
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
 

@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
 {
     public static class Extensions
     {
-        public static IServiceCollection RegisterGlobalExceptionHandler(this IServiceCollection services)
-        {
-            services.AddSingleton<ExceptionHandlerMiddleware>();
-            return services;
-        }
-        public static IApplicationBuilder UseGlobalExceptionHandler(this IApplicationBuilder app)
+        public static IApplicationBuilder UseGlobalExceptions(this IApplicationBuilder app)
         {
             ArgumentNullException.ThrowIfNull(app, nameof(app));
-
-            return app.UseMiddleware<ExceptionHandlerMiddleware>();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+            
+            return app;
         }
     }
 }

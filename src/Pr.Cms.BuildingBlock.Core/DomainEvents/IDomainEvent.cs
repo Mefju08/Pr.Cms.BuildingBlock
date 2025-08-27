@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Domain.Events
+﻿namespace Pr.Cms.BuildingBlock.Core.DomainEvents
 {
     public interface IDomainEvent
     {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pr.Cms.BuildingBlock.Domain.Types;
 using Wolverine;
 namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 {

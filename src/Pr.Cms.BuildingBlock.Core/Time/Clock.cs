@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Pr.Cms.BuildingBlock.Infrastructure")]
-namespace Pr.Cms.BuildingBlock.Abstractions.Time
+namespace Pr.Cms.BuildingBlock.Core.Time
 {
     /// <summary>
     /// Statyczny zegar zapewniaj¹cy globalny dostêp do us³ugi czasu poprzez.

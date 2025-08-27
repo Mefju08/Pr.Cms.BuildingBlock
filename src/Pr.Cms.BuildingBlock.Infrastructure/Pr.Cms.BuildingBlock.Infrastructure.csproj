@@ -17,13 +17,11 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageReference Include="WolverineFx" Version="4.10.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Pr.Cms.BuildingBlock.Abstractions\Pr.Cms.BuildingBlock.Abstractions.csproj" />
-    <ProjectReference Include="..\Pr.Cms.BuildingBlock.Domain\Pr.Cms.BuildingBlock.Domain.csproj" />
-  </ItemGroup>
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Pr.Cms.BuildingBlock.Core\Pr.Cms.BuildingBlock.Core.csproj" />
 	</ItemGroup>
 
 </Project>

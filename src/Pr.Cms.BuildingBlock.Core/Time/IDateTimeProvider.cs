@@ -1,4 +1,4 @@
-namespace Pr.Cms.BuildingBlock.Abstractions.Time
+namespace Pr.Cms.BuildingBlock.Core.Time
 {
     /// <summary>
     /// Kontrakt dla dostawcy czasu.

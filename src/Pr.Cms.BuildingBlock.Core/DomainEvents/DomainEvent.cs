@@ -1,6 +1,6 @@
-﻿using Pr.Cms.BuildingBlock.Abstractions.Time;
+﻿using Pr.Cms.BuildingBlock.Core.Time;
 
-namespace Pr.Cms.BuildingBlock.Domain.Events
+namespace Pr.Cms.BuildingBlock.Core.DomainEvents
 {
     /// <summary>
     /// Abstrakcyjna klasa bazowa dla wszystkich wydarzeń domenowych w systemie.

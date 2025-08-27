@@ -1,6 +1,6 @@
-﻿using Pr.Cms.BuildingBlock.Domain.Events;
+﻿using Pr.Cms.BuildingBlock.Core.DomainEvents;
 
-namespace Pr.Cms.BuildingBlock.Domain.Types
+namespace Pr.Cms.BuildingBlock.Core.Types
 {
     /// <summary>
     /// Abstrakcyjna klasa bazowa dla agregatów domenowych zarządzająca wydarzeniami domenowymi i wersjonowaniem.

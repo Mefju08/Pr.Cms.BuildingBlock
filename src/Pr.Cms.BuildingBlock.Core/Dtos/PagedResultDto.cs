@@ -1,4 +1,4 @@
-﻿namespace Pr.Cms.BuildingBlock.Application.Dtos
+﻿namespace Pr.Cms.BuildingBlock.Core.Dtos
 {
     /// <summary>
     /// Reprezentuje stronicowane wyniki zapytania zawierające kolekcję danych i dane paginacji.
