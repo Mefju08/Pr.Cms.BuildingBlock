@@ -12,3 +12,17 @@
     Zaimplementowano scentralizowany mechanizm obsługi wyjątków. Różne **rodzaje wyjątków** (np. `NotFoundException`) są mapowane na odpowiednie kody statusu HTTP, co zapewnia przewidywalne i spójne zachowanie API.
 * **Statyczny Dostawca Daty (Clock)**
 * **Model do paginacji**
+
+# Użycie
+
+* **`AddApiResponseWrapper`**
+  Rejestracja wrappera do automatycznego opakowywania odpowiedzi w spójny format JSON `{"data": ...}`
+* **`RegisterDomainEventHandlers`**
+  Rejestracja handlerów eventów
+* **`UseGlobalExceptions`**
+  Rejestracje middleware do globalnej obsługi wyjątków
+* **`AddSharedInfrastructure`**
+  Rejestracja serwisów takich jak: `IDateTimeProvider`, `IUnitOfWork`, `IDomainEventsDispatcher`, `ExceptionHandlerMiddleware`,
+* **`AddPostgres`**
+  Rejestracja bazy danych postgres
+  
