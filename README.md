@@ -2,8 +2,8 @@
 
 * **`AddApiResponseWrapper`**
   Rejestracja wrappera do automatycznego opakowywania odpowiedzi w spójny format JSON `{"data": ...}`
-* **`RegisterDomainEventHandlers`**
-  Rejestracja handlerów eventów
+* **`AddDomainEventHandlers`**
+  Rejestracja handlerów eventów. Musi być zawsze zarejestrowane, jeśli używamy `AddSharedInfrastructure`
 * **`UseGlobalExceptions`**
   Rejestracje middleware do globalnej obsługi wyjątków
 * **`AddSharedInfrastructure`**
