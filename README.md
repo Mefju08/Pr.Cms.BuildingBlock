@@ -22,7 +22,7 @@
 * **`UseGlobalExceptions`**
   Rejestracje middleware do globalnej obsługi wyjątków
 * **`AddSharedInfrastructure`**
-  Rejestracja serwisów takich jak: `IDateTimeProvider`, `IUnitOfWork`, `IDomainEventsDispatcher`, `ExceptionHandlerMiddleware`,
+  Rejestracja serwisów takich jak: `IDateTimeProvider`, `IUnitOfWork`, `IDomainEventsDispatcher`, `ExceptionHandlerMiddleware`
 * **`AddPostgres`**
   Rejestracja bazy danych postgres
   
