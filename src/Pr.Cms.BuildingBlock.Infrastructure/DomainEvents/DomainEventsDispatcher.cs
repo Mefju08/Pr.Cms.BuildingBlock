@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pr.Cms.BuildingBlock.Core.Types;
 using Wolverine;
 namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 {
@@ -21,7 +22,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.DomainEvents
 
             foreach (var domainEvent in domainEvents)
             {
-                await publisher.PublishAsync(domainEvent);
+                await publisher.InvokeAsync(domainEvent);
             }
         }
     }

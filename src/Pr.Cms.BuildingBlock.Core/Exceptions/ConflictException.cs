@@ -9,6 +9,7 @@
         public ConflictException(string resourceType, object resourceId)
             : base($"Conflict occurred with {resourceType} '{resourceId}'.")
         {
+            
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Pr.Cms.BuildingBlock.Core.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -10,6 +11,11 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
         ILogger<ExceptionHandlerMiddleware> logger,
         IHostEnvironment environment) : IMiddleware
     {
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
@@ -27,13 +33,7 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
         {
             var errorResponse = CreateErrorResponse(exception);
 
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-
-            var jsonResponse = JsonSerializer.Serialize(errorResponse, jsonOptions);
+            var jsonResponse = JsonSerializer.Serialize(errorResponse, JsonOptions);
             context.Response.StatusCode = errorResponse.StatusCode;
 
             await context.Response.WriteAsync(jsonResponse);
@@ -42,6 +42,11 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
         {
             return exception switch
             {
+                InvalidValueException invalidValueEx => new ErrorResponse(
+                    StatusCode: (int)HttpStatusCode.BadRequest,
+                    Title: "Invalid Value",
+                    Detail: invalidValueEx.Message
+                ),
                 NotFoundException notFoundEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.NotFound,
                     Title: "Resource Not Found",
@@ -51,7 +56,6 @@ namespace Pr.Cms.BuildingBlock.Infrastructure.Exceptions
                     StatusCode: (int)HttpStatusCode.Conflict,
                     Title: "Resource Conflict",
                     Detail: conflictEx.Message
-
                 ),
                 ForbiddenException forbiddenEx => new ErrorResponse(
                     StatusCode: (int)HttpStatusCode.Forbidden,
