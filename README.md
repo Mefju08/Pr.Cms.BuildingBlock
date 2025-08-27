@@ -2,8 +2,8 @@
 
 * **`AddApiResponseWrapper`**
   Rejestracja wrappera do automatycznego opakowywania odpowiedzi w spójny format JSON `{"data": ...}`
-* **`AddDomainEventHandlers`**
-  Rejestracja handlerów eventów. Musi być zawsze zarejestrowane, jeśli używamy `AddSharedInfrastructure`
+* **`UseSharedWolverine`**
+  Rejestracja komponentów potrzebnych do działania wolverine (wprowadzić wszystkie assemblies). Wywołać na builder.Host
 * **`UseGlobalExceptions`**
   Rejestracje middleware do globalnej obsługi wyjątków
 * **`AddSharedInfrastructure`**
